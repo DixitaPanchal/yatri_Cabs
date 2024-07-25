@@ -75,4 +75,14 @@ class AppWidget {
       fontSize: 14,
     );
   }
+
+  static TextStyle SeachCity() {
+    return TextStyle(
+      color: greentextColor,
+      fontFamily: "Poppins",
+      fontWeight: FontWeight.w700,
+      fontSize: 24,
+    );
+  }
+
 }
