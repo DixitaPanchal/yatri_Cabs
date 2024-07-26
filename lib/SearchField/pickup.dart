@@ -1,10 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:interview_yatri_cabs/Pages/roundtrip.dart';
 import 'package:interview_yatri_cabs/colors/Colors.dart';
 import 'package:interview_yatri_cabs/components/text.dart';
 import 'package:interview_yatri_cabs/model/citymodel.dart';
 import 'package:interview_yatri_cabs/service/CityProvider.dart';
-import 'package:interview_yatri_cabs/widgets/list.dart';
 import 'package:provider/provider.dart';
 
 class PickUplocation extends StatefulWidget {
@@ -68,10 +68,10 @@ class _PickUplocationState extends State<PickUplocation> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => RoundTrip(),
+                  builder: (context) => const RoundTrip(),
                 ));
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_new_outlined,
             size: 30,
             color: greentextColor,
@@ -84,19 +84,25 @@ class _PickUplocationState extends State<PickUplocation> {
   }
 
   Widget mainbody() {
+
+    final textFieldState = Provider.of<TextFieldState>(context);
     return SingleChildScrollView(
+
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextField(
+              onChanged: (text){
+                textFieldState.updateText1(text);
+              },
               controller: _controller,
               decoration: InputDecoration(
                   filled: true,
                   fillColor: lightGreen,
                   hintText: "Search here..",
                   hintStyle: AppWidget.SimpleTextGreen(),
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.search_rounded,
                     size: 30,
                     color: greentextColor,
@@ -132,11 +138,11 @@ class _PickUplocationState extends State<PickUplocation> {
               itemCount: filterCity.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  leading: Icon(Icons.location_pin, color: textColor),
+                  leading: const Icon(Icons.location_pin, color: textColor),
                   title: Text(filterCity[index], style: AppWidget.SimpleTextWhite(),),
                     onTap: (){
                       context.read<CityProvider>().selectCity(cityModel(name: filterCity[index]));
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => RoundTrip(),));
+                      Navigator.pop(context);
                     },
                 );
               })

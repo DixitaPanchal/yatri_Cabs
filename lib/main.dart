@@ -1,10 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:interview_yatri_cabs/Pages/airport.dart';
-import 'package:interview_yatri_cabs/Pages/localtrip.dart';
 import 'package:interview_yatri_cabs/Pages/roundtrip.dart';
 import 'package:interview_yatri_cabs/SearchField/pickup.dart';
-import 'package:interview_yatri_cabs/components/togglePage.dart';
 import 'package:interview_yatri_cabs/service/CityProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,8 +12,7 @@ void main() {
       ChangeNotifierProvider(create: (context) => DropCityProvider()),
       ChangeNotifierProvider(create: (context) => DateProvider()),
       ChangeNotifierProvider(create: (context) => TimeProvider()),
-
-
+      ChangeNotifierProvider(create: (context) => TextFieldState(),),
     ],
         child: MyApp(),),
   );
@@ -52,7 +48,7 @@ class MyApp extends StatelessWidget {
      // theme: ThemeData.dark(),
 
       debugShowCheckedModeBanner: false,
-      home: RoundTrip(),
+      home: const RoundTrip(),
     );
   }
 }

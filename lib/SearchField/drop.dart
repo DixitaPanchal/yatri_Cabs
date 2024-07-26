@@ -33,6 +33,8 @@ class _DropLocState extends State<DropLoc> {
   late List<String> filterCity;
 
 
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -88,12 +90,17 @@ class _DropLocState extends State<DropLoc> {
   }
 
   Widget mainbody() {
+    final textFieldState = Provider.of<TextFieldState>(context);
+
     return SingleChildScrollView(
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextField(
+              onChanged: (text){
+                textFieldState.updateText2(text);
+              },
               controller: _controller,
               decoration: InputDecoration(
                   filled: true,
@@ -140,7 +147,8 @@ class _DropLocState extends State<DropLoc> {
                   title: Text(filterCity[index], style: AppWidget.SimpleTextWhite(),),
                   onTap: (){
                     context.read<DropCityProvider>().selectCity(cityModel(name: filterCity[index]));
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => RoundTrip(),));
+                    Navigator.pop(context);
+
                   },
                 );
               })

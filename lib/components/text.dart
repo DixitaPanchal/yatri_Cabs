@@ -85,4 +85,14 @@ class AppWidget {
     );
   }
 
+  static TextStyle Selectedlabel() {
+    return TextStyle(
+      color: textColor,
+      fontFamily: "Poppins",
+      fontWeight: FontWeight.w700,
+      fontSize: 12,
+    );
+  }
+
+
 }
